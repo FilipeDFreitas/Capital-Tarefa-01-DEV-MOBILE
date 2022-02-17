@@ -50,19 +50,27 @@ public class MainActivity extends AppCompatActivity {
                     "Fortaleza"
 
             };
+    TextView TentativasTxt;
+    TextView Input;
+    TextView UFView;
+    TextView Result;
+    Button Try;
+    Button Next;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
-
+        TentativasTxt = findViewById(R.id.Tentativas);
+        Input = findViewById(R.id.CapitalInput);
+        UFView = findViewById(R.id.UF);
+        Result = findViewById(R.id.Resultado);
+        Try = (Button) findViewById(R.id.Go);
+        Next = (Button) findViewById(R.id.Prox);
+        Next.setOnClickListener(view -> quiz());
+        quiz();
     }
-    public void quiz(View view){
-        TextView TentativasTxt = findViewById(R.id.Tentativas);
-        TextView Input = findViewById(R.id.CapitalInput);
-        TextView UFView = findViewById(R.id.UF);
-        TextView Result = findViewById(R.id.Resultado);
-        Button Try = (Button) findViewById(R.id.Go);
-        Button Next = (Button) findViewById(R.id.Prox);
+    public void quiz(){
+
 
         Try.setEnabled(true);
         Result.setText("");
@@ -95,7 +103,7 @@ public class MainActivity extends AppCompatActivity {
             String test = UF[i] + "?";
             if(UFView.getText().toString().equals(test)){
                 if(Input.getText().toString().equals(Capital[i])) {
-                    Pontos= pontos +10;
+                    Pontos= Pontos +10;
                     pontosTxt.setText(String.valueOf(Pontos));
                     Result.setText("Acertou!");
                 }
